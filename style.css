@@ -1022,3 +1022,236 @@ button { font-family: inherit; }
     height: clamp(22px, 5.8dvh, 30px) !important;
   }
 }
+
+
+/* === STATKI v1015 — telefon poziomo: plansze 10x10, statki bez białego tła === */
+.board {
+  aspect-ratio: 1 / 1 !important;
+  grid-auto-rows: 1fr !important;
+  grid-auto-columns: 1fr !important;
+  contain: layout paint !important;
+}
+
+.cell {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+
+.ship-token,
+.ship-token:focus,
+.ship-token:active,
+.ship-token:hover {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background: rgba(4, 32, 69, 0.62) !important;
+  background-color: rgba(4, 32, 69, 0.62) !important;
+  border: 1px solid rgba(153, 219, 255, 0.55) !important;
+  outline: none !important;
+  box-shadow: inset 0 0 10px rgba(40, 156, 232, 0.14), 0 0 8px rgba(29, 160, 235, 0.18) !important;
+}
+
+.ship-token-preview {
+  display: block !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  mix-blend-mode: normal !important;
+}
+
+@media (max-height: 620px) and (min-aspect-ratio: 1/1) {
+  .game-screen {
+    background-image: url("assets/bg_game_statki.png") !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+  }
+
+  .small-back {
+    left: max(8px, env(safe-area-inset-left)) !important;
+    top: max(8px, env(safe-area-inset-top)) !important;
+    padding: 7px 14px !important;
+    font-size: clamp(11px, 2.6dvh, 14px) !important;
+    border-radius: 10px !important;
+  }
+
+  .game-ui {
+    display: grid !important;
+    grid-template-columns: 35.8% 35.8% 18.5% !important;
+    grid-template-rows: 49.5% 8.2% 25.5% !important;
+    grid-template-areas:
+      "own enemy players"
+      "names names players"
+      "status status players" !important;
+    column-gap: 1.25% !important;
+    row-gap: 1.0% !important;
+    padding:
+      clamp(74px, 17.5dvh, 96px)
+      clamp(42px, 4.6vw, 76px)
+      clamp(12px, 2.5dvh, 22px)
+      clamp(66px, 6.8vw, 104px) !important;
+  }
+
+  .board-panel {
+    display: grid !important;
+    place-items: center start !important;
+    overflow: hidden !important;
+    padding: clamp(4px, 1dvh, 9px) !important;
+  }
+
+  .board-panel-own .board,
+  .board-panel-enemy .board {
+    margin-left: clamp(12px, 1.3vw, 20px) !important;
+    justify-self: start !important;
+    align-self: center !important;
+  }
+
+  .board {
+    width: min(29.5dvh, 16.2vw, 160px) !important;
+    height: min(29.5dvh, 16.2vw, 160px) !important;
+    min-width: min(29.5dvh, 16.2vw, 160px) !important;
+    min-height: min(29.5dvh, 16.2vw, 160px) !important;
+    max-width: min(29.5dvh, 16.2vw, 160px) !important;
+    max-height: min(29.5dvh, 16.2vw, 160px) !important;
+  }
+
+  .names-row {
+    grid-area: names !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2.1% !important;
+    padding: 0 0.7% !important;
+    z-index: 7 !important;
+  }
+
+  .players-panel {
+    grid-area: players !important;
+    transform: translateX(clamp(8px, 0.8vw, 16px)) !important;
+    padding: clamp(22px, 5.2dvh, 36px) 6% 6% !important;
+    overflow: hidden !important;
+  }
+
+  .status-panel {
+    grid-area: status !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 27%) minmax(0, 73%) !important;
+    gap: clamp(6px, 0.9vw, 12px) !important;
+    align-items: start !important;
+    padding-top: clamp(18px, 4.5dvh, 34px) !important;
+    padding-bottom: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .status-text {
+    font-size: clamp(8px, 2.05dvh, 11px) !important;
+    line-height: 1.14 !important;
+    max-height: clamp(60px, 16dvh, 82px) !important;
+    overflow: hidden !important;
+  }
+
+  .ship-dock {
+    display: grid !important;
+    grid-template-columns: repeat(10, minmax(24px, 1fr)) !important;
+    gap: clamp(3px, 0.42vw, 6px) !important;
+    width: 100% !important;
+    max-height: clamp(26px, 7.2dvh, 42px) !important;
+    overflow: hidden !important;
+    margin-top: clamp(6px, 1.6dvh, 12px) !important;
+    align-self: start !important;
+    align-items: start !important;
+    justify-items: center !important;
+  }
+
+  .ship-token {
+    min-height: clamp(21px, 5.5dvh, 31px) !important;
+    height: clamp(21px, 5.5dvh, 31px) !important;
+    padding: 1px 3px !important;
+    border-radius: 7px !important;
+  }
+
+  .ship-token-preview {
+    max-width: 68px !important;
+    max-height: 25px !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+}
+
+@media (max-height: 440px) and (min-aspect-ratio: 1/1) {
+  .game-ui {
+    grid-template-rows: 48% 8.2% 25.8% !important;
+    padding:
+      clamp(56px, 15.5dvh, 72px)
+      clamp(34px, 4vw, 62px)
+      clamp(10px, 2.6dvh, 18px)
+      clamp(58px, 6.2vw, 84px) !important;
+  }
+
+  .board {
+    width: min(27.4dvh, 15.2vw, 132px) !important;
+    height: min(27.4dvh, 15.2vw, 132px) !important;
+    min-width: min(27.4dvh, 15.2vw, 132px) !important;
+    min-height: min(27.4dvh, 15.2vw, 132px) !important;
+    max-width: min(27.4dvh, 15.2vw, 132px) !important;
+    max-height: min(27.4dvh, 15.2vw, 132px) !important;
+  }
+
+  .status-panel {
+    grid-template-columns: minmax(0, 25%) minmax(0, 75%) !important;
+    padding-top: clamp(14px, 4dvh, 24px) !important;
+  }
+
+  .ship-dock {
+    max-height: clamp(22px, 6.6dvh, 34px) !important;
+    margin-top: clamp(5px, 1.2dvh, 9px) !important;
+  }
+
+  .ship-token {
+    min-height: clamp(18px, 5.2dvh, 26px) !important;
+    height: clamp(18px, 5.2dvh, 26px) !important;
+  }
+
+  .ship-token-preview {
+    max-height: 20px !important;
+  }
+}
+
+.orientation-lock-notice {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  place-items: center;
+  padding: 28px;
+  background: radial-gradient(circle at center, rgba(5, 45, 84, 0.94), rgba(0, 8, 22, 0.98));
+  color: #eaf8ff;
+  text-align: center;
+}
+
+.orientation-lock-card {
+  width: min(92vw, 420px);
+  border: 1px solid rgba(152, 221, 255, 0.70);
+  border-radius: 18px;
+  background: rgba(3, 24, 51, 0.88);
+  box-shadow: 0 0 28px rgba(42, 178, 255, 0.35);
+  padding: 24px;
+  display: grid;
+  gap: 12px;
+}
+
+.orientation-lock-card strong {
+  font-size: clamp(24px, 7vw, 38px);
+  letter-spacing: 0.05em;
+}
+
+.orientation-lock-card span {
+  font-size: clamp(15px, 4vw, 18px);
+  line-height: 1.35;
+}
+
+@media (orientation: portrait) and (max-width: 760px) {
+  .game-screen:not(.hidden) .orientation-lock-notice {
+    display: grid !important;
+  }
+}

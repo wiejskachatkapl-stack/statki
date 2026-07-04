@@ -84,9 +84,23 @@
     startScreen.classList.remove('hidden');
   }
 
+  async function requestLandscapeMode() {
+    try {
+      if (screen.orientation?.lock && document.documentElement.requestFullscreen) {
+        if (!document.fullscreenElement) {
+          await document.documentElement.requestFullscreen();
+        }
+        await screen.orientation.lock('landscape');
+      }
+    } catch (_) {
+      // Przeglądarka może blokować wymuszenie orientacji poza PWA/fullscreen.
+    }
+  }
+
   function showGame() {
     startScreen.classList.add('hidden');
     gameScreen.classList.remove('hidden');
+    requestLandscapeMode();
     registerPlayer();
     if (!state.enemyFleet.length) generateEnemyFleet();
     renderAll();
