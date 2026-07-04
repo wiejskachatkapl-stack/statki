@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>STATKI — Game Room</title>
+
+  <meta name="theme-color" content="#041d40" />
+  <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app" class="app">
+    <section id="startScreen" class="screen start-screen" aria-label="Ekran startowy gry Statki">
+      <div class="menu-actions" aria-label="Menu gry Statki">
+        <button id="playBtn" class="nav-btn nav-btn-play" type="button">GRAJ</button>
+        <button id="exitBtn" class="nav-btn nav-btn-exit" type="button">WYJŚCIE</button>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen hidden" aria-label="Ekran gry Statki">
+      <button id="backToStartBtn" class="small-back" type="button" aria-label="Powrót do ekranu startowego">COFNIJ</button>
+
+      <div class="game-ui" aria-label="Mechanika gry Statki">
+        <section class="board-panel board-panel-own">
+          <div id="ownBoard" class="board" aria-label="Twoja plansza 10 na 10"></div>
+        </section>
+
+        <section class="board-panel board-panel-enemy">
+          <div id="enemyBoard" class="board board-enemy" aria-label="Plansza przeciwnika 10 na 10"></div>
+        </section>
+
+        <aside class="players-panel" aria-label="Gracze w grze Statki">
+          <div class="panel-title">GRACZE W STATKACH</div>
+          <div id="playersList" class="players-list"></div>
+        </aside>
+
+        <div class="names-row" aria-label="Nicki graczy">
+          <div class="name-chip name-chip-left">
+            <span>TY</span>
+            <strong id="myNameLabel">GRACZ</strong>
+          </div>
+          <div class="name-chip name-chip-right">
+            <span>PRZECIWNIK</span>
+            <strong id="enemyNameLabel">BRAK</strong>
+          </div>
+        </div>
+
+        <section class="status-panel">
+          <div id="statusText" class="status-text">Wejdź do gry. Po prawej stronie zobaczysz osoby dostępne w Statkach.</div>
+          <div id="shipDock" class="ship-dock" aria-label="Statki do ustawienia"></div>
+        </section>
+      </div>
+
+      <div id="inviteModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Zaproszenie do gry">
+        <div class="modal-card">
+          <h2>Zaproszenie do gry</h2>
+          <p id="inviteText">Gracz zaprasza Cię do rozgrywki.</p>
+          <div class="modal-actions">
+            <button id="acceptInviteBtn" type="button" class="modal-btn primary">GRAM</button>
+            <button id="declineInviteBtn" type="button" class="modal-btn">NIE TERAZ</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
