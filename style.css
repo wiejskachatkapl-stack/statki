@@ -49,8 +49,8 @@ button { font-family: inherit; }
     linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.18));
 }
 .hidden { display: none !important; }
-.start-screen { background-image: url("assets/bg_start_statki.png?v=1022"); }
-.game-screen  { background-image: url("assets/bg_game_statki.png?v=1022"); background-size: 100% 100%; background-position: center center; }
+.start-screen { background-image: url("assets/bg_start_statki.png?v=1023"); }
+.game-screen  { background-image: url("assets/bg_game_statki.png?v=1023"); background-size: 100% 100%; background-position: center center; }
 
 .menu-actions {
   position: absolute;
@@ -230,8 +230,8 @@ button { font-family: inherit; }
 .modal-btn.primary { background: rgba(18, 119, 189, 0.98); box-shadow: 0 0 18px rgba(44, 186, 255, 0.46); }
 
 @media (orientation: portrait), (max-width: 760px) {
-  .start-screen { background-image: url("assets/bg_start_statki_mobile.png?v=1022"); background-size: cover; background-position: center center; }
-  .game-screen { background-image: url("assets/bg_game_statki_mobile.png?v=1022"); background-size: 100% 100%; background-position: center center; }
+  .start-screen { background-image: url("assets/bg_start_statki_mobile.png?v=1023"); background-size: cover; background-position: center center; }
+  .game-screen { background-image: url("assets/bg_game_statki_mobile.png?v=1023"); background-size: 100% 100%; background-position: center center; }
   .menu-actions {
     width: min(84vw, 480px); bottom: max(54px, calc(env(safe-area-inset-bottom) + 7dvh));
     flex-direction: column; gap: clamp(16px, 2.8dvh, 30px);
@@ -831,7 +831,7 @@ button { font-family: inherit; }
 */
 @media (max-height: 620px) and (min-aspect-ratio: 1/1) {
   .game-screen {
-    background-image: url("assets/bg_game_statki.png?v=1022") !important;
+    background-image: url("assets/bg_game_statki.png?v=1023") !important;
     background-size: 100% 100% !important;
     background-position: center center !important;
   }
@@ -1062,7 +1062,7 @@ button { font-family: inherit; }
 
 @media (max-height: 620px) and (min-aspect-ratio: 1/1) {
   .game-screen {
-    background-image: url("assets/bg_game_statki.png?v=1022") !important;
+    background-image: url("assets/bg_game_statki.png?v=1023") !important;
     background-size: 100% 100% !important;
     background-position: center center !important;
   }
@@ -1467,7 +1467,7 @@ button { font-family: inherit; }
 
 /* STATKI v1017 — znacznik wersji i wymuszone odświeżenie CSS */
 .game-screen::before {
-  content: "v1022";
+  content: "v1023";
   position: absolute;
   left: max(8px, env(safe-area-inset-left));
   bottom: max(6px, env(safe-area-inset-bottom));
@@ -2458,5 +2458,24 @@ button { font-family: inherit; }
     min-height: min(48.8dvh, 25.8vw, 374px) !important;
     max-width: min(48.8dvh, 25.8vw, 374px) !important;
     max-height: min(48.8dvh, 25.8vw, 374px) !important;
+  }
+}
+
+
+/* === STATKI v1023 — tylko lewa plansza komputer: rozciągnięcie z prawego dolnego narożnika ===
+   Lewy górny punkt zostaje praktycznie w miejscu, a plansza jest powiększona
+   w prawo i w dół, z zachowaniem kwadratu 10x10. Reszty układu nie ruszamy.
+*/
+@media (min-width: 761px) {
+  .board-panel-own .board {
+    margin-left: clamp(38px, 2.35vw, 52px) !important;
+    margin-top: clamp(6px, 0.55dvh, 10px) !important;
+
+    width: min(51.2dvh, 27.1vw, 392px) !important;
+    height: min(51.2dvh, 27.1vw, 392px) !important;
+    min-width: min(51.2dvh, 27.1vw, 392px) !important;
+    min-height: min(51.2dvh, 27.1vw, 392px) !important;
+    max-width: min(51.2dvh, 27.1vw, 392px) !important;
+    max-height: min(51.2dvh, 27.1vw, 392px) !important;
   }
 }
