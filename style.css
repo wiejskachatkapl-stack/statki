@@ -49,8 +49,8 @@ button { font-family: inherit; }
     linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.18));
 }
 .hidden { display: none !important; }
-.start-screen { background-image: url("assets/bg_start_statki.png?v=1018"); }
-.game-screen  { background-image: url("assets/bg_game_statki.png?v=1018"); background-size: 100% 100%; background-position: center center; }
+.start-screen { background-image: url("assets/bg_start_statki.png?v=1019"); }
+.game-screen  { background-image: url("assets/bg_game_statki.png?v=1019"); background-size: 100% 100%; background-position: center center; }
 
 .menu-actions {
   position: absolute;
@@ -230,8 +230,8 @@ button { font-family: inherit; }
 .modal-btn.primary { background: rgba(18, 119, 189, 0.98); box-shadow: 0 0 18px rgba(44, 186, 255, 0.46); }
 
 @media (orientation: portrait), (max-width: 760px) {
-  .start-screen { background-image: url("assets/bg_start_statki_mobile.png?v=1018"); background-size: cover; background-position: center center; }
-  .game-screen { background-image: url("assets/bg_game_statki_mobile.png?v=1018"); background-size: 100% 100%; background-position: center center; }
+  .start-screen { background-image: url("assets/bg_start_statki_mobile.png?v=1019"); background-size: cover; background-position: center center; }
+  .game-screen { background-image: url("assets/bg_game_statki_mobile.png?v=1019"); background-size: 100% 100%; background-position: center center; }
   .menu-actions {
     width: min(84vw, 480px); bottom: max(54px, calc(env(safe-area-inset-bottom) + 7dvh));
     flex-direction: column; gap: clamp(16px, 2.8dvh, 30px);
@@ -831,7 +831,7 @@ button { font-family: inherit; }
 */
 @media (max-height: 620px) and (min-aspect-ratio: 1/1) {
   .game-screen {
-    background-image: url("assets/bg_game_statki.png?v=1018") !important;
+    background-image: url("assets/bg_game_statki.png?v=1019") !important;
     background-size: 100% 100% !important;
     background-position: center center !important;
   }
@@ -1062,7 +1062,7 @@ button { font-family: inherit; }
 
 @media (max-height: 620px) and (min-aspect-ratio: 1/1) {
   .game-screen {
-    background-image: url("assets/bg_game_statki.png?v=1018") !important;
+    background-image: url("assets/bg_game_statki.png?v=1019") !important;
     background-size: 100% 100% !important;
     background-position: center center !important;
   }
@@ -1467,7 +1467,7 @@ button { font-family: inherit; }
 
 /* STATKI v1017 — znacznik wersji i wymuszone odświeżenie CSS */
 .game-screen::before {
-  content: "v1018";
+  content: "v1019";
   position: absolute;
   left: max(8px, env(safe-area-inset-left));
   bottom: max(6px, env(safe-area-inset-bottom));
@@ -1756,5 +1756,247 @@ button { font-family: inherit; }
 
   .ship-token-preview {
     max-height: 14px !important;
+  }
+}
+
+
+/* === STATKI v1019 — dalsze dopasowanie wg ostatnich uwag ===
+   - dolna ramka ze statkami zwężona,
+   - belki z nickami obniżone,
+   - plansze 10x10 powiększone do maksimum,
+   - statki równiej rozstawione w dolnej ramce.
+*/
+
+/* wspólne */
+.ship-dock {
+  justify-content: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.name-chip {
+  box-shadow: inset 0 0 14px rgba(57, 170, 242, 0.12), 0 0 10px rgba(37, 147, 215, 0.12) !important;
+}
+
+/* komputer / laptop */
+@media (min-width: 761px) {
+  .game-ui {
+    grid-template-rows: 61.8% 6.4% 12.8% !important;
+    padding-top: clamp(96px, 14.2dvh, 124px) !important;
+    padding-bottom: clamp(18px, 2.2dvh, 24px) !important;
+    padding-left: clamp(92px, 5.3vw, 120px) !important;
+    padding-right: clamp(78px, 4.6vw, 100px) !important;
+  }
+
+  .board-panel {
+    padding-top: 0 !important;
+    align-items: start !important;
+  }
+
+  .board-panel-own .board,
+  .board-panel-enemy .board {
+    margin-left: clamp(6px, 0.55vw, 12px) !important;
+  }
+
+  .board {
+    width: min(50dvh, 26vw, 370px) !important;
+    height: min(50dvh, 26vw, 370px) !important;
+    min-width: min(50dvh, 26vw, 370px) !important;
+    min-height: min(50dvh, 26vw, 370px) !important;
+    max-width: min(50dvh, 26vw, 370px) !important;
+    max-height: min(50dvh, 26vw, 370px) !important;
+  }
+
+  .names-row {
+    transform: translateY(clamp(18px, 2.1dvh, 28px)) !important;
+    gap: clamp(12px, 1vw, 18px) !important;
+    padding: 0 0.9% !important;
+  }
+
+  .name-chip {
+    width: 38% !important;
+    min-height: clamp(34px, 4.2dvh, 44px) !important;
+    border-radius: 10px !important;
+  }
+
+  .name-chip span {
+    font-size: clamp(9px, 0.74vw, 12px) !important;
+  }
+
+  .name-chip strong {
+    font-size: clamp(15px, 1.55vw, 26px) !important;
+  }
+
+  .status-panel {
+    grid-template-columns: minmax(0, 18%) minmax(0, 82%) !important;
+    padding-top: clamp(30px, 3.7dvh, 42px) !important;
+    padding-left: 1.2% !important;
+    padding-right: 1.2% !important;
+  }
+
+  .status-text {
+    font-size: clamp(10px, 0.9vw, 15px) !important;
+    line-height: 1.08 !important;
+    margin-top: clamp(12px, 1.3dvh, 18px) !important;
+  }
+
+  .ship-dock {
+    width: 78% !important;
+    gap: clamp(8px, 0.62vw, 12px) !important;
+    margin-top: clamp(14px, 1.7dvh, 20px) !important;
+    height: clamp(46px, 5.8dvh, 58px) !important;
+    max-height: clamp(46px, 5.8dvh, 58px) !important;
+    padding: 0 !important;
+  }
+
+  .ship-token {
+    min-height: clamp(36px, 4.6dvh, 42px) !important;
+    height: clamp(36px, 4.6dvh, 42px) !important;
+    padding: 3px 8px !important;
+  }
+
+  .ship-token.size-1 { width: 48px !important; }
+  .ship-token.size-2 { width: 76px !important; }
+  .ship-token.size-3 { width: 104px !important; }
+  .ship-token.size-4 { width: 132px !important; }
+
+  .ship-token-preview {
+    max-height: 30px !important;
+  }
+}
+
+/* telefon poziomo */
+@media (max-height: 620px) and (min-aspect-ratio: 1/1) {
+  .game-ui {
+    grid-template-rows: 63% 6.9% 12.6% !important;
+    padding-top: clamp(56px, 13.2dvh, 74px) !important;
+    padding-bottom: clamp(6px, 1.3dvh, 10px) !important;
+    padding-left: clamp(52px, 5.1vw, 76px) !important;
+    padding-right: clamp(30px, 3vw, 46px) !important;
+  }
+
+  .board-panel {
+    padding-top: 0 !important;
+    align-items: start !important;
+  }
+
+  .board-panel-own .board,
+  .board-panel-enemy .board {
+    margin-left: clamp(6px, 0.65vw, 10px) !important;
+  }
+
+  .board {
+    width: min(43dvh, 23.2vw, 240px) !important;
+    height: min(43dvh, 23.2vw, 240px) !important;
+    min-width: min(43dvh, 23.2vw, 240px) !important;
+    min-height: min(43dvh, 23.2vw, 240px) !important;
+    max-width: min(43dvh, 23.2vw, 240px) !important;
+    max-height: min(43dvh, 23.2vw, 240px) !important;
+  }
+
+  .names-row {
+    transform: translateY(clamp(14px, 2.5dvh, 20px)) !important;
+    gap: 8px !important;
+    padding: 0 0.8% !important;
+  }
+
+  .name-chip {
+    width: 39% !important;
+    min-height: clamp(22px, 4.1dvh, 30px) !important;
+    gap: 4px !important;
+  }
+
+  .name-chip span {
+    font-size: clamp(7px, 1.35dvh, 9px) !important;
+  }
+
+  .name-chip strong {
+    font-size: clamp(11px, 2.2dvh, 16px) !important;
+  }
+
+  .status-panel {
+    grid-template-columns: minmax(0, 17%) minmax(0, 83%) !important;
+    padding-top: clamp(20px, 3.9dvh, 28px) !important;
+    gap: 5px !important;
+  }
+
+  .status-text {
+    font-size: clamp(7px, 1.55dvh, 9px) !important;
+    line-height: 1.04 !important;
+    margin-top: clamp(10px, 1.4dvh, 14px) !important;
+  }
+
+  .ship-dock {
+    width: 76% !important;
+    gap: clamp(3px, 0.3vw, 5px) !important;
+    margin-top: clamp(8px, 1.5dvh, 12px) !important;
+    height: clamp(22px, 4.7dvh, 28px) !important;
+    max-height: clamp(22px, 4.7dvh, 28px) !important;
+    padding: 0 !important;
+  }
+
+  .ship-token {
+    min-height: clamp(17px, 3.9dvh, 22px) !important;
+    height: clamp(17px, 3.9dvh, 22px) !important;
+    padding: 1px 4px !important;
+  }
+
+  .ship-token.size-1 { width: 26px !important; }
+  .ship-token.size-2 { width: 42px !important; }
+  .ship-token.size-3 { width: 58px !important; }
+  .ship-token.size-4 { width: 74px !important; }
+
+  .ship-token-preview {
+    max-height: 15px !important;
+  }
+}
+
+/* bardzo niskie telefony poziomo */
+@media (max-height: 440px) and (min-aspect-ratio: 1/1) {
+  .game-ui {
+    grid-template-rows: 62% 6.9% 12.1% !important;
+    padding-top: clamp(46px, 12.2dvh, 58px) !important;
+  }
+
+  .board {
+    width: min(39dvh, 22vw, 208px) !important;
+    height: min(39dvh, 22vw, 208px) !important;
+    min-width: min(39dvh, 22vw, 208px) !important;
+    min-height: min(39dvh, 22vw, 208px) !important;
+    max-width: min(39dvh, 22vw, 208px) !important;
+    max-height: min(39dvh, 22vw, 208px) !important;
+  }
+
+  .names-row {
+    transform: translateY(clamp(12px, 2.2dvh, 16px)) !important;
+  }
+
+  .name-chip {
+    min-height: clamp(18px, 3.8dvh, 24px) !important;
+  }
+
+  .status-panel {
+    padding-top: clamp(16px, 3.4dvh, 22px) !important;
+  }
+
+  .ship-dock {
+    width: 74% !important;
+    margin-top: clamp(6px, 1.2dvh, 9px) !important;
+    height: clamp(18px, 4dvh, 24px) !important;
+    max-height: clamp(18px, 4dvh, 24px) !important;
+  }
+
+  .ship-token {
+    min-height: clamp(14px, 3.2dvh, 18px) !important;
+    height: clamp(14px, 3.2dvh, 18px) !important;
+  }
+
+  .ship-token.size-1 { width: 22px !important; }
+  .ship-token.size-2 { width: 36px !important; }
+  .ship-token.size-3 { width: 50px !important; }
+  .ship-token.size-4 { width: 64px !important; }
+
+  .ship-token-preview {
+    max-height: 12px !important;
   }
 }
