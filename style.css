@@ -49,8 +49,8 @@ button { font-family: inherit; }
     linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.18));
 }
 .hidden { display: none !important; }
-.start-screen { background-image: url("assets/bg_start_statki.png?v=1019"); }
-.game-screen  { background-image: url("assets/bg_game_statki.png?v=1019"); background-size: 100% 100%; background-position: center center; }
+.start-screen { background-image: url("assets/bg_start_statki.png?v=1020"); }
+.game-screen  { background-image: url("assets/bg_game_statki.png?v=1020"); background-size: 100% 100%; background-position: center center; }
 
 .menu-actions {
   position: absolute;
@@ -230,8 +230,8 @@ button { font-family: inherit; }
 .modal-btn.primary { background: rgba(18, 119, 189, 0.98); box-shadow: 0 0 18px rgba(44, 186, 255, 0.46); }
 
 @media (orientation: portrait), (max-width: 760px) {
-  .start-screen { background-image: url("assets/bg_start_statki_mobile.png?v=1019"); background-size: cover; background-position: center center; }
-  .game-screen { background-image: url("assets/bg_game_statki_mobile.png?v=1019"); background-size: 100% 100%; background-position: center center; }
+  .start-screen { background-image: url("assets/bg_start_statki_mobile.png?v=1020"); background-size: cover; background-position: center center; }
+  .game-screen { background-image: url("assets/bg_game_statki_mobile.png?v=1020"); background-size: 100% 100%; background-position: center center; }
   .menu-actions {
     width: min(84vw, 480px); bottom: max(54px, calc(env(safe-area-inset-bottom) + 7dvh));
     flex-direction: column; gap: clamp(16px, 2.8dvh, 30px);
@@ -831,7 +831,7 @@ button { font-family: inherit; }
 */
 @media (max-height: 620px) and (min-aspect-ratio: 1/1) {
   .game-screen {
-    background-image: url("assets/bg_game_statki.png?v=1019") !important;
+    background-image: url("assets/bg_game_statki.png?v=1020") !important;
     background-size: 100% 100% !important;
     background-position: center center !important;
   }
@@ -1062,7 +1062,7 @@ button { font-family: inherit; }
 
 @media (max-height: 620px) and (min-aspect-ratio: 1/1) {
   .game-screen {
-    background-image: url("assets/bg_game_statki.png?v=1019") !important;
+    background-image: url("assets/bg_game_statki.png?v=1020") !important;
     background-size: 100% 100% !important;
     background-position: center center !important;
   }
@@ -1467,7 +1467,7 @@ button { font-family: inherit; }
 
 /* STATKI v1017 — znacznik wersji i wymuszone odświeżenie CSS */
 .game-screen::before {
-  content: "v1019";
+  content: "v1020";
   position: absolute;
   left: max(8px, env(safe-area-inset-left));
   bottom: max(6px, env(safe-area-inset-bottom));
@@ -1998,5 +1998,169 @@ button { font-family: inherit; }
 
   .ship-token-preview {
     max-height: 12px !important;
+  }
+}
+
+
+/* === STATKI v1020 — dopasowanie do żółtych ramek z makiety ===
+   Cel:
+   1) plansze 10x10 większe, szersze i trochę niżej / bardziej do środka,
+   2) belki z nickami krótsze i wyżej, zgodnie z żółtym zaznaczeniem,
+   3) bez ruszania mechaniki.
+*/
+
+/* DESKTOP / LAPTOP */
+@media (min-width: 761px) {
+  .game-ui {
+    /* dajemy więcej miejsca pionowo na plansze i trochę mniej na dół */
+    grid-template-rows: 64.5% 5.6% 10.6% !important;
+    padding-top: clamp(92px, 13.5dvh, 116px) !important;
+    padding-bottom: clamp(16px, 1.9dvh, 22px) !important;
+    padding-left: clamp(84px, 4.9vw, 110px) !important;
+    padding-right: clamp(72px, 4.2vw, 92px) !important;
+  }
+
+  .board-panel {
+    align-items: start !important;
+    padding-top: 0 !important;
+  }
+
+  .board-panel-own .board,
+  .board-panel-enemy .board {
+    margin-top: 0 !important;
+  }
+
+  /* lewa plansza bliżej środka i większa */
+  .board-panel-own .board {
+    margin-left: clamp(22px, 1.8vw, 34px) !important;
+  }
+
+  /* prawa plansza także trochę w prawo i większa */
+  .board-panel-enemy .board {
+    margin-left: clamp(12px, 1vw, 22px) !important;
+  }
+
+  .board {
+    width: min(54dvh, 28.6vw, 408px) !important;
+    height: min(54dvh, 28.6vw, 408px) !important;
+    min-width: min(54dvh, 28.6vw, 408px) !important;
+    min-height: min(54dvh, 28.6vw, 408px) !important;
+    max-width: min(54dvh, 28.6vw, 408px) !important;
+    max-height: min(54dvh, 28.6vw, 408px) !important;
+  }
+
+  /* belki z nickami – krótsze i wyżej */
+  .names-row {
+    transform: translateY(clamp(4px, 0.55dvh, 8px)) !important;
+    gap: clamp(16px, 1.3vw, 24px) !important;
+    padding: 0 1% !important;
+    align-items: center !important;
+  }
+
+  .name-chip {
+    width: 33.5% !important;
+    min-height: clamp(30px, 3.7dvh, 38px) !important;
+    border-radius: 8px !important;
+    justify-content: center !important;
+    gap: 6px !important;
+  }
+
+  .name-chip span {
+    font-size: clamp(8px, 0.68vw, 11px) !important;
+  }
+
+  .name-chip strong {
+    font-size: clamp(14px, 1.35vw, 22px) !important;
+  }
+
+  /* dół zostawiamy stabilny */
+  .status-panel {
+    padding-top: clamp(20px, 2.4dvh, 28px) !important;
+  }
+}
+
+/* TELEFON POZIOMO / MAŁE EKRANY */
+@media (max-height: 620px) and (min-aspect-ratio: 1/1) {
+  .game-ui {
+    grid-template-rows: 66% 5.8% 10.2% !important;
+    padding-top: clamp(52px, 12.2dvh, 68px) !important;
+    padding-bottom: clamp(6px, 1.1dvh, 10px) !important;
+    padding-left: clamp(48px, 4.6vw, 68px) !important;
+    padding-right: clamp(28px, 2.6vw, 42px) !important;
+  }
+
+  .board-panel {
+    align-items: start !important;
+    padding-top: 0 !important;
+  }
+
+  .board-panel-own .board {
+    margin-left: clamp(16px, 1.4vw, 24px) !important;
+  }
+
+  .board-panel-enemy .board {
+    margin-left: clamp(8px, 0.8vw, 14px) !important;
+  }
+
+  .board {
+    width: min(47dvh, 25vw, 270px) !important;
+    height: min(47dvh, 25vw, 270px) !important;
+    min-width: min(47dvh, 25vw, 270px) !important;
+    min-height: min(47dvh, 25vw, 270px) !important;
+    max-width: min(47dvh, 25vw, 270px) !important;
+    max-height: min(47dvh, 25vw, 270px) !important;
+  }
+
+  .names-row {
+    transform: translateY(clamp(2px, 0.4dvh, 6px)) !important;
+    gap: 8px !important;
+    padding: 0 0.8% !important;
+    align-items: center !important;
+  }
+
+  .name-chip {
+    width: 33.5% !important;
+    min-height: clamp(18px, 3.2dvh, 24px) !important;
+    border-radius: 7px !important;
+    gap: 4px !important;
+  }
+
+  .name-chip span {
+    font-size: clamp(7px, 1.2dvh, 8px) !important;
+  }
+
+  .name-chip strong {
+    font-size: clamp(10px, 1.9dvh, 14px) !important;
+  }
+
+  .status-panel {
+    padding-top: clamp(14px, 2.5dvh, 20px) !important;
+  }
+}
+
+/* BARDZO NISKIE TELEFONY W POZIOMIE */
+@media (max-height: 440px) and (min-aspect-ratio: 1/1) {
+  .game-ui {
+    grid-template-rows: 64.5% 5.8% 9.8% !important;
+    padding-top: clamp(44px, 11.2dvh, 56px) !important;
+    padding-left: clamp(44px, 4.1vw, 60px) !important;
+    padding-right: clamp(26px, 2.2vw, 36px) !important;
+  }
+
+  .board {
+    width: min(42dvh, 24vw, 232px) !important;
+    height: min(42dvh, 24vw, 232px) !important;
+    min-width: min(42dvh, 24vw, 232px) !important;
+    min-height: min(42dvh, 24vw, 232px) !important;
+    max-width: min(42dvh, 24vw, 232px) !important;
+    max-height: min(42dvh, 24vw, 232px) !important;
+  }
+
+  .names-row {
+    transform: translateY(0) !important;
+  }
+
+  .name-chip {
+    min-height: clamp(16px, 2.9dvh, 21px) !important;
   }
 }
