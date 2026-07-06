@@ -1,5 +1,5 @@
 (() => {
-  const STATKI_BUILD_VERSION = 'v1017';
+  const STATKI_BUILD_VERSION = 'v1018';
   console.log('STATKI build', STATKI_BUILD_VERSION);
   const startScreen = document.getElementById('startScreen');
   const gameScreen = document.getElementById('gameScreen');
@@ -297,7 +297,8 @@
     FLEET_TEMPLATE.forEach((ship) => {
       const token = document.createElement('button');
       token.type = 'button';
-      token.className = 'ship-token';
+      token.className = `ship-token size-${ship.size}`;
+      token.dataset.size = String(ship.size);
       if (state.activeShipId === ship.id) token.classList.add('active');
       if (state.placedShips[ship.id]) token.classList.add('done');
       token.title = state.placedShips[ship.id] ? 'Ten statek jest już ustawiony' : 'Kliknij, aby wybrać statek do ustawienia';
@@ -308,7 +309,7 @@
           state.activeShipId = ship.id;
           renderShipDock();
           renderBoards();
-          setStatus(`Wybrany: ${ship.name}. Kliknij na lewej planszy, aby go ustawić. Klawisz R obraca.`);
+          setStatus('WYBIERZ STATKI I DODAJ DO EKRANU GRY.');
         }
       });
       shipDock.appendChild(token);
@@ -481,7 +482,7 @@
   window.addEventListener('statki-local-event', () => { if (!gameScreen.classList.contains('hidden')) { processEvents(); renderPlayers(); } });
   window.addEventListener('beforeunload', unregisterPlayer);
   setInterval(() => {
-  const STATKI_BUILD_VERSION = 'v1017';
+  const STATKI_BUILD_VERSION = 'v1018';
   console.log('STATKI build', STATKI_BUILD_VERSION); if (!gameScreen.classList.contains('hidden')) { registerPlayer(); processEvents(); renderPlayers(); } }, HEARTBEAT_MS);
 
   myNameLabel.textContent = state.myName;
