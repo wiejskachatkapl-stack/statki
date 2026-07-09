@@ -49,8 +49,8 @@ button { font-family: inherit; }
     linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.18));
 }
 .hidden { display: none !important; }
-.start-screen { background-image: url("assets/bg_start_statki.png?v=1029"); }
-.game-screen  { background-image: url("assets/bg_game_statki.png?v=1029"); background-size: 100% 100%; background-position: center center; }
+.start-screen { background-image: url("assets/bg_start_statki.png?v=1030"); }
+.game-screen  { background-image: url("assets/bg_game_statki.png?v=1030"); background-size: 100% 100%; background-position: center center; }
 
 .menu-actions {
   position: absolute;
