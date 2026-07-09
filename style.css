@@ -1467,7 +1467,7 @@ button { font-family: inherit; }
 
 /* STATKI v1017 — znacznik wersji i wymuszone odświeżenie CSS */
 .game-screen::before {
-  content: "v1034";
+  content: "v1035";
   position: absolute;
   left: max(8px, env(safe-area-inset-left));
   bottom: max(6px, env(safe-area-inset-bottom));
@@ -3361,4 +3361,49 @@ button { font-family: inherit; }
 
   .ship-dock-left  { left: 30.4vw !important; top: 24.4dvh !important; }
   .ship-dock-right { left: 65.0vw !important; top: 24.4dvh !important; }
+}
+
+
+/* === STATKI v1035 ===
+   POPRAWKA: oba komplety statków mają być kompletne i ustawione obok plansz,
+   bez dziedziczenia wcześniejszych nth-child/top/left z poprzednich wersji.
+*/
+.ship-dock-group .ship-token:nth-child(n) {
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+}
+
+.ship-dock-group {
+  z-index: 20 !important;
+}
+
+.ship-dock-left,
+.ship-dock-right {
+  pointer-events: none !important;
+}
+
+.ship-dock-left .ship-token,
+.ship-dock-right .ship-token {
+  pointer-events: auto !important;
+}
+
+@media (min-width: 761px) {
+  /* lewy komplet — w wolnej strefie między planszami */
+  .ship-dock-left  { left: 29.2vw !important; top: 25.0dvh !important; }
+  /* prawy komplet — w wolnej strefie między prawą planszą a panelem graczy */
+  .ship-dock-right { left: 61.9vw !important; top: 25.0dvh !important; }
+}
+
+@media (max-height: 620px) and (min-aspect-ratio: 1/1) {
+  .ship-dock-left  { left: 29.5vw !important; top: 24.6dvh !important; }
+  .ship-dock-right { left: 62.1vw !important; top: 24.6dvh !important; }
+}
+
+@media (max-height: 440px) and (min-aspect-ratio: 1/1) {
+  .ship-dock-left  { left: 29.5vw !important; top: 24.2dvh !important; }
+  .ship-dock-right { left: 62.1vw !important; top: 24.2dvh !important; }
 }
