@@ -2638,13 +2638,13 @@ button { font-family: inherit; }
     align-self: start !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
-    margin-top: clamp(46px, 4dvh, 50px) !important;
+    margin-top: clamp(42px, 4dvh, 50px) !important;
 
-    width: min(49dvh, 26.8vw, 386px) !important;
-    height: min(49dvh, 26.8vw, 386px) !important;
-    min-width: min(49dvh, 26.8vw, 386px) !important;
-    min-height: min(49dvh, 26.8vw, 386px) !important;
-    max-width: min(49dvh, 26.8vw, 386px) !important;
-    max-height: min(49dvh, 26.8vw, 386px) !important;
+    width: min(47dvh, 26.8vw, 386px) !important;
+    height: min(47dvh, 26.8vw, 386px) !important;
+    min-width: min(47dvh, 26.8vw, 386px) !important;
+    min-height: min(47dvh, 26.8vw, 386px) !important;
+    max-width: min(47dvh, 26.8vw, 386px) !important;
+    max-height: min(47dvh, 26.8vw, 386px) !important;
   }
 }
