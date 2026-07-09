@@ -2640,11 +2640,11 @@ button { font-family: inherit; }
     margin-right: 0 !important;
     margin-top: clamp(46px, 4dvh, 50px) !important;
 
-    width: min(50.6dvh, 26.8vw, 386px) !important;
-    height: min(50.6dvh, 26.8vw, 386px) !important;
-    min-width: min(50.6dvh, 26.8vw, 386px) !important;
-    min-height: min(50.6dvh, 26.8vw, 386px) !important;
-    max-width: min(50.6dvh, 26.8vw, 386px) !important;
-    max-height: min(50.6dvh, 26.8vw, 386px) !important;
+    width: min(49dvh, 26.8vw, 386px) !important;
+    height: min(49dvh, 26.8vw, 386px) !important;
+    min-width: min(49dvh, 26.8vw, 386px) !important;
+    min-height: min(49dvh, 26.8vw, 386px) !important;
+    max-width: min(49dvh, 26.8vw, 386px) !important;
+    max-height: min(49dvh, 26.8vw, 386px) !important;
   }
 }
