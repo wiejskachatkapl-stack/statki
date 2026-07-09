@@ -13,39 +13,12 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
-
-  <script>
-    // STATKI v1027: twarde czyszczenie cache po starej wersji / service workerach.
-    (function () {
-      var BUILD = "1030"
-      try {
-        var KEY = "STATKI_BUILD_LOADED";
-        var previous = localStorage.getItem(KEY);
-        if (previous !== BUILD) {
-          localStorage.setItem(KEY, BUILD);
-
-          if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.getRegistrations()
-              .then(function (registrations) {
-                return Promise.all(registrations.map(function (registration) {
-                  return registration.unregister();
-                }));
-              })
-              .catch(function () {});
-          }
-
-          if ("caches" in window) {
-            caches.keys()
-              .then(function (keys) {
-                return Promise.all(keys.map(function (key) { return caches.delete(key); }));
-              })
-              .catch(function () {});
-          }
-        }
-      } catch (e) {}
-    })();
-  </script>
-  <link rel="stylesheet" href="style.css?v=1037" />
+<link rel="stylesheet" href="style.css?v=1038" />
+  <link rel="manifest" href="manifest.webmanifest?v=1038">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="STATKI">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
   <main id="app" class="app">
@@ -111,6 +84,17 @@
     </section>
   </main>
 
-  <script src="app.js?v=1037"></script>
+  <script src="app.js?v=1038"></script>
+
+  <script>
+    // STATKI v1038 PWA: rejestracja service workera do instalacji aplikacji.
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('./sw.js?v=1038')
+          .catch(function (err) { console.warn('STATKI SW registration failed:', err); });
+      });
+    }
+  </script>
+
 </body>
 </html>

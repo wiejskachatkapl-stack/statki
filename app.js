@@ -1,6 +1,6 @@
 (() => {
-  const STATKI_BUILD_VERSION = 'v1037';
-  console.log('STATKI build', STATKI_BUILD_VERSION, 'STATKI_CACHE_RESET_V1037');
+  const STATKI_BUILD_VERSION = 'v1038';
+  console.log('STATKI build', STATKI_BUILD_VERSION, 'STATKI_PWA_FIX_V1038');
   const startScreen = document.getElementById('startScreen');
   const gameScreen = document.getElementById('gameScreen');
   const playBtn = document.getElementById('playBtn');
@@ -509,8 +509,8 @@
   window.addEventListener('statki-local-event', () => { if (!gameScreen.classList.contains('hidden')) { processEvents(); renderPlayers(); } });
   window.addEventListener('beforeunload', unregisterPlayer);
   setInterval(() => {
-  const STATKI_BUILD_VERSION = 'v1037';
-  console.log('STATKI build', STATKI_BUILD_VERSION, 'STATKI_CACHE_RESET_V1037'); if (!gameScreen.classList.contains('hidden')) { registerPlayer(); processEvents(); renderPlayers(); } }, HEARTBEAT_MS);
+  const STATKI_BUILD_VERSION = 'v1038';
+  console.log('STATKI build', STATKI_BUILD_VERSION, 'STATKI_PWA_FIX_V1038'); if (!gameScreen.classList.contains('hidden')) { registerPlayer(); processEvents(); renderPlayers(); } }, HEARTBEAT_MS);
 
   myNameLabel.textContent = state.myName;
   generateEnemyFleet();

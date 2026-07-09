@@ -6,16 +6,16 @@
   <title>Reset STATKI</title>
   <style>
     body{font-family:Arial,sans-serif;background:#020914;color:#eaf8ff;display:grid;place-items:center;min-height:100vh;margin:0;text-align:center}
-    .card{max-width:520px;padding:24px;border:1px solid #69c7ff;border-radius:16px;background:#061d3a}
+    .card{max-width:560px;padding:24px;border:1px solid #69c7ff;border-radius:16px;background:#061d3a}
     button,a{display:inline-block;margin:8px;padding:12px 18px;border-radius:10px;border:1px solid #9de3ff;background:#0a5792;color:white;font-weight:900;text-decoration:none}
   </style>
 </head>
 <body>
   <div class="card">
     <h1>Reset STATKI</h1>
-    <p>Ta strona czyści cache, service worker i zapis wersji gry.</p>
+    <p>Ta strona czyści stary cache i potem otwiera wersję PWA v1038.</p>
     <button id="reset">Wyczyść i otwórz grę</button>
-    <p><a href="index.html?v=1037">Otwórz bez czyszczenia</a></p>
+    <p><a href="index.html?v=1038">Otwórz bez czyszczenia</a></p>
   </div>
   <script>
     document.getElementById('reset').onclick = async function () {
@@ -31,7 +31,7 @@
         localStorage.removeItem('STATKI_BUILD_LOADED');
         sessionStorage.clear();
       } catch(e) {}
-      location.href = 'index.html?v=1037&t=' + Date.now();
+      location.href = 'index.html?v=1038&t=' + Date.now();
     };
   </script>
 </body>
