@@ -1,6 +1,6 @@
 (() => {
-  const STATKI_BUILD_VERSION = 'v1029';
-  console.log('STATKI build', STATKI_BUILD_VERSION, 'STATKI_CACHE_RESET_V1029');
+  const STATKI_BUILD_VERSION = 'v1030';
+  console.log('STATKI build', STATKI_BUILD_VERSION, 'STATKI_CACHE_RESET_V1030');
   const startScreen = document.getElementById('startScreen');
   const gameScreen = document.getElementById('gameScreen');
   const playBtn = document.getElementById('playBtn');
@@ -87,16 +87,10 @@
   }
 
   async function requestLandscapeMode() {
-    try {
-      if (screen.orientation?.lock && document.documentElement.requestFullscreen) {
-        if (!document.fullscreenElement) {
-          await document.documentElement.requestFullscreen();
-        }
-        await screen.orientation.lock('landscape');
-      }
-    } catch (_) {
-      // Przeglądarka może blokować wymuszenie orientacji poza PWA/fullscreen.
-    }
+    // v1030: nie wymuszamy pełnego ekranu, bo fullscreen zmienia wymiary viewportu.
+    // Układ jest dopasowany procentowo do aktualnego ekranu. Gdy telefon jest pionowo,
+    // działa nakładka CSS prosząca o obrót telefonu.
+    return;
   }
 
   function showGame() {
@@ -482,8 +476,8 @@
   window.addEventListener('statki-local-event', () => { if (!gameScreen.classList.contains('hidden')) { processEvents(); renderPlayers(); } });
   window.addEventListener('beforeunload', unregisterPlayer);
   setInterval(() => {
-  const STATKI_BUILD_VERSION = 'v1029';
-  console.log('STATKI build', STATKI_BUILD_VERSION, 'STATKI_CACHE_RESET_V1029'); if (!gameScreen.classList.contains('hidden')) { registerPlayer(); processEvents(); renderPlayers(); } }, HEARTBEAT_MS);
+  const STATKI_BUILD_VERSION = 'v1030';
+  console.log('STATKI build', STATKI_BUILD_VERSION, 'STATKI_CACHE_RESET_V1030'); if (!gameScreen.classList.contains('hidden')) { registerPlayer(); processEvents(); renderPlayers(); } }, HEARTBEAT_MS);
 
   myNameLabel.textContent = state.myName;
   generateEnemyFleet();
