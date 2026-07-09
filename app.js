@@ -1,6 +1,6 @@
 (() => {
-  const STATKI_BUILD_VERSION = 'v1035';
-  console.log('STATKI build', STATKI_BUILD_VERSION, 'STATKI_CACHE_RESET_V1035');
+  const STATKI_BUILD_VERSION = 'v1036';
+  console.log('STATKI build', STATKI_BUILD_VERSION, 'STATKI_CACHE_RESET_V1036');
   const startScreen = document.getElementById('startScreen');
   const gameScreen = document.getElementById('gameScreen');
   const playBtn = document.getElementById('playBtn');
@@ -313,20 +313,32 @@
     return token;
   }
 
-  function renderShipDock() {
-    shipDock.innerHTML = '';
+  function buildShipDockGroup(groupClass, interactive) {
+    const group = document.createElement('div');
+    group.className = `ship-dock-group ${groupClass}`;
 
-    const leftGroup = document.createElement('div');
-    leftGroup.className = 'ship-dock-group ship-dock-left';
-
-    const rightGroup = document.createElement('div');
-    rightGroup.className = 'ship-dock-group ship-dock-right';
-
-    FLEET_TEMPLATE.forEach((ship) => {
-      leftGroup.appendChild(makeShipToken(ship, true));
-      rightGroup.appendChild(makeShipToken(ship, false, 'ship-token-preview-copy'));
+    const rows = new Map();
+    [4, 3, 2, 1].forEach((size) => {
+      const row = document.createElement('div');
+      row.className = `ship-dock-row ship-dock-row-${size}`;
+      row.dataset.size = String(size);
+      rows.set(size, row);
+      group.appendChild(row);
     });
 
+    FLEET_TEMPLATE.forEach((ship) => {
+      const token = makeShipToken(ship, interactive, interactive ? '' : 'ship-token-preview-copy');
+      const row = rows.get(ship.length);
+      if (row) row.appendChild(token);
+    });
+
+    return group;
+  }
+
+  function renderShipDock() {
+    shipDock.innerHTML = '';
+    const leftGroup = buildShipDockGroup('ship-dock-left', true);
+    const rightGroup = buildShipDockGroup('ship-dock-right', false);
     shipDock.appendChild(leftGroup);
     shipDock.appendChild(rightGroup);
   }
@@ -497,8 +509,8 @@
   window.addEventListener('statki-local-event', () => { if (!gameScreen.classList.contains('hidden')) { processEvents(); renderPlayers(); } });
   window.addEventListener('beforeunload', unregisterPlayer);
   setInterval(() => {
-  const STATKI_BUILD_VERSION = 'v1035';
-  console.log('STATKI build', STATKI_BUILD_VERSION, 'STATKI_CACHE_RESET_V1035'); if (!gameScreen.classList.contains('hidden')) { registerPlayer(); processEvents(); renderPlayers(); } }, HEARTBEAT_MS);
+  const STATKI_BUILD_VERSION = 'v1036';
+  console.log('STATKI build', STATKI_BUILD_VERSION, 'STATKI_CACHE_RESET_V1036'); if (!gameScreen.classList.contains('hidden')) { registerPlayer(); processEvents(); renderPlayers(); } }, HEARTBEAT_MS);
 
   myNameLabel.textContent = state.myName;
   generateEnemyFleet();

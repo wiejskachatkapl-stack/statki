@@ -1467,7 +1467,7 @@ button { font-family: inherit; }
 
 /* STATKI v1017 — znacznik wersji i wymuszone odświeżenie CSS */
 .game-screen::before {
-  content: "v1035";
+  content: "v1036";
   position: absolute;
   left: max(8px, env(safe-area-inset-left));
   bottom: max(6px, env(safe-area-inset-bottom));
@@ -3406,4 +3406,95 @@ button { font-family: inherit; }
 @media (max-height: 440px) and (min-aspect-ratio: 1/1) {
   .ship-dock-left  { left: 29.5vw !important; top: 24.2dvh !important; }
   .ship-dock-right { left: 62.1vw !important; top: 24.2dvh !important; }
+}
+
+
+/* === STATKI v1036 ===
+   Statki przy każdej planszy układamy w 4 czytelnych rzędach:
+   1x 4-masztowiec, 2x 3-masztowiec, 3x 2-masztowiec, 4x 1-masztowiec.
+*/
+.ship-dock-group {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: clamp(7px, 1.1dvh, 12px) !important;
+  width: clamp(138px, 11.2vw, 188px) !important;
+}
+
+.ship-dock-row {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(5px, 0.55vw, 8px) !important;
+  width: 100% !important;
+}
+
+.ship-dock-row .ship-token {
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  flex: 0 0 auto !important;
+}
+
+.ship-dock-left,
+.ship-dock-right {
+  pointer-events: none !important;
+}
+.ship-dock-left .ship-token,
+.ship-dock-right .ship-token {
+  pointer-events: auto !important;
+}
+
+/* desktop */
+@media (min-width: 761px) {
+  .ship-dock-left  { left: 28.6vw !important; top: 24.8dvh !important; }
+  .ship-dock-right { left: 61.0vw !important; top: 24.8dvh !important; }
+}
+
+/* telefon poziomy */
+@media (max-height: 620px) and (min-aspect-ratio: 1/1) {
+  .ship-dock-group {
+    gap: clamp(4px, 0.8dvh, 7px) !important;
+    width: clamp(92px, 13.0vw, 132px) !important;
+  }
+  .ship-dock-row {
+    gap: clamp(2px, 0.35vw, 5px) !important;
+  }
+  .ship-dock-group .ship-token {
+    height: clamp(14px, 2.8dvh, 22px) !important;
+    padding: 1px 4px !important;
+    border-radius: 6px !important;
+  }
+  .ship-dock-group .ship-token.size-1 { width: clamp(18px, 1.7vw, 26px) !important; }
+  .ship-dock-group .ship-token.size-2 { width: clamp(28px, 2.8vw, 40px) !important; }
+  .ship-dock-group .ship-token.size-3 { width: clamp(38px, 3.8vw, 54px) !important; }
+  .ship-dock-group .ship-token.size-4 { width: clamp(48px, 4.8vw, 70px) !important; }
+  .ship-dock-left  { left: 30.0vw !important; top: 24.8dvh !important; }
+  .ship-dock-right { left: 63.0vw !important; top: 24.8dvh !important; }
+}
+
+/* bardzo niskie telefony */
+@media (max-height: 440px) and (min-aspect-ratio: 1/1) {
+  .ship-dock-group {
+    width: clamp(84px, 12.6vw, 118px) !important;
+    gap: clamp(3px, 0.7dvh, 6px) !important;
+  }
+  .ship-dock-row {
+    gap: 2px !important;
+  }
+  .ship-dock-group .ship-token {
+    height: clamp(12px, 2.4dvh, 18px) !important;
+    padding: 1px 3px !important;
+  }
+  .ship-dock-group .ship-token.size-1 { width: clamp(15px, 1.5vw, 22px) !important; }
+  .ship-dock-group .ship-token.size-2 { width: clamp(24px, 2.4vw, 34px) !important; }
+  .ship-dock-group .ship-token.size-3 { width: clamp(32px, 3.2vw, 46px) !important; }
+  .ship-dock-group .ship-token.size-4 { width: clamp(40px, 4.0vw, 58px) !important; }
+  .ship-dock-left  { left: 30.0vw !important; top: 24.4dvh !important; }
+  .ship-dock-right { left: 63.0vw !important; top: 24.4dvh !important; }
 }

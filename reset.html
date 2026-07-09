@@ -15,7 +15,7 @@
     <h1>Reset STATKI</h1>
     <p>Ta strona czyści cache, service worker i zapis wersji gry.</p>
     <button id="reset">Wyczyść i otwórz grę</button>
-    <p><a href="index.html?v=1035">Otwórz bez czyszczenia</a></p>
+    <p><a href="index.html?v=1036">Otwórz bez czyszczenia</a></p>
   </div>
   <script>
     document.getElementById('reset').onclick = async function () {
@@ -31,7 +31,7 @@
         localStorage.removeItem('STATKI_BUILD_LOADED');
         sessionStorage.clear();
       } catch(e) {}
-      location.href = 'index.html?v=1035&t=' + Date.now();
+      location.href = 'index.html?v=1036&t=' + Date.now();
     };
   </script>
 </body>
