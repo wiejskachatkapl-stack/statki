@@ -2638,7 +2638,7 @@ button { font-family: inherit; }
     align-self: start !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
-    margin-top: clamp(34px, 3.45dvh, 48px) !important;
+    margin-top: clamp(46px, 4dvh, 50px) !important;
 
     width: min(50.6dvh, 26.8vw, 386px) !important;
     height: min(50.6dvh, 26.8vw, 386px) !important;
