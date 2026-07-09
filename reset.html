@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reset STATKI</title>
+  <style>
+    body{font-family:Arial,sans-serif;background:#020914;color:#eaf8ff;display:grid;place-items:center;min-height:100vh;margin:0;text-align:center}
+    .card{max-width:520px;padding:24px;border:1px solid #69c7ff;border-radius:16px;background:#061d3a}
+    button,a{display:inline-block;margin:8px;padding:12px 18px;border-radius:10px;border:1px solid #9de3ff;background:#0a5792;color:white;font-weight:900;text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Reset STATKI</h1>
+    <p>Ta strona czyści cache, service worker i zapis wersji gry.</p>
+    <button id="reset">Wyczyść i otwórz grę</button>
+    <p><a href="index.html?v=1027">Otwórz bez czyszczenia</a></p>
+  </div>
+  <script>
+    document.getElementById('reset').onclick = async function () {
+      try {
+        if ('serviceWorker' in navigator) {
+          const regs = await navigator.serviceWorker.getRegistrations();
+          await Promise.all(regs.map(r => r.unregister()));
+        }
+        if ('caches' in window) {
+          const keys = await caches.keys();
+          await Promise.all(keys.map(k => caches.delete(k)));
+        }
+        localStorage.removeItem('STATKI_BUILD_LOADED');
+        sessionStorage.clear();
+      } catch(e) {}
+      location.href = 'index.html?v=1027&t=' + Date.now();
+    };
+  </script>
+</body>
+</html>
