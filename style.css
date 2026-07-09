@@ -49,8 +49,8 @@ button { font-family: inherit; }
     linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.18));
 }
 .hidden { display: none !important; }
-.start-screen { background-image: url("assets/bg_start_statki.png?v=1030"); }
-.game-screen  { background-image: url("assets/bg_game_statki.png?v=1030"); background-size: 100% 100%; background-position: center center; }
+.start-screen { background-image: url("assets/bg_start_statki.png?v=1031"); }
+.game-screen  { background-image: url("assets/bg_game_statki.png?v=1031"); background-size: 100% 100%; background-position: center center; }
 
 .menu-actions {
   position: absolute;
@@ -230,8 +230,8 @@ button { font-family: inherit; }
 .modal-btn.primary { background: rgba(18, 119, 189, 0.98); box-shadow: 0 0 18px rgba(44, 186, 255, 0.46); }
 
 @media (orientation: portrait), (max-width: 760px) {
-  .start-screen { background-image: url("assets/bg_start_statki_mobile.png?v=1030"); background-size: cover; background-position: center center; }
-  .game-screen { background-image: url("assets/bg_game_statki_mobile.png?v=1030"); background-size: 100% 100%; background-position: center center; }
+  .start-screen { background-image: url("assets/bg_start_statki_mobile.png?v=1031"); background-size: cover; background-position: center center; }
+  .game-screen { background-image: url("assets/bg_game_statki_mobile.png?v=1031"); background-size: 100% 100%; background-position: center center; }
   .menu-actions {
     width: min(84vw, 480px); bottom: max(54px, calc(env(safe-area-inset-bottom) + 7dvh));
     flex-direction: column; gap: clamp(16px, 2.8dvh, 30px);
@@ -831,7 +831,7 @@ button { font-family: inherit; }
 */
 @media (max-height: 620px) and (min-aspect-ratio: 1/1) {
   .game-screen {
-    background-image: url("assets/bg_game_statki.png?v=1030") !important;
+    background-image: url("assets/bg_game_statki.png?v=1031") !important;
     background-size: 100% 100% !important;
     background-position: center center !important;
   }
@@ -1062,7 +1062,7 @@ button { font-family: inherit; }
 
 @media (max-height: 620px) and (min-aspect-ratio: 1/1) {
   .game-screen {
-    background-image: url("assets/bg_game_statki.png?v=1030") !important;
+    background-image: url("assets/bg_game_statki.png?v=1031") !important;
     background-size: 100% 100% !important;
     background-position: center center !important;
   }
@@ -1467,7 +1467,7 @@ button { font-family: inherit; }
 
 /* STATKI v1017 — znacznik wersji i wymuszone odświeżenie CSS */
 .game-screen::before {
-  content: "v1030";
+  content: "v1031";
   position: absolute;
   left: max(8px, env(safe-area-inset-left));
   bottom: max(6px, env(safe-area-inset-bottom));
@@ -2660,7 +2660,7 @@ button { font-family: inherit; }
 
 /* ekran gry i tło zawsze pracują jako jedna plansza */
 .game-screen {
-  background-image: url("assets/bg_game_statki.png?v=1030") !important;
+  background-image: url("assets/bg_game_statki.png?v=1031") !important;
   background-size: 100% 100% !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
@@ -2951,5 +2951,78 @@ button { font-family: inherit; }
 @media (orientation: portrait) and (max-width: 760px) {
   .game-screen:not(.hidden) .orientation-lock-notice {
     display: grid !important;
+  }
+}
+
+
+/* === STATKI v1031 — maksymalne powiększenie plansz w graficznych ramkach ===
+   Po v1030 układ wrócił do ramek. Teraz powiększamy tylko plansze 10x10
+   tak, aby lepiej wypełniały graficzne ramki tła na komputerze i telefonie.
+   Mechanika bez zmian.
+*/
+
+/* KOMPUTER / LAPTOP */
+@media (min-width: 761px) {
+  .board-panel-own,
+  .board-panel-enemy {
+    top: 18.8% !important;
+    height: 45.8% !important;
+  }
+
+  .board-panel-own .board,
+  .board-panel-enemy .board {
+    left: 5.8% !important;
+    top: 3.4% !important;
+
+    width: min(84%, 41.2dvh) !important;
+    height: min(84%, 41.2dvh) !important;
+    min-width: min(84%, 41.2dvh) !important;
+    min-height: min(84%, 41.2dvh) !important;
+    max-width: min(84%, 41.2dvh) !important;
+    max-height: min(84%, 41.2dvh) !important;
+  }
+}
+
+/* TELEFON W POZIOMIE */
+@media (max-height: 620px) and (min-aspect-ratio: 1/1) {
+  .board-panel-own,
+  .board-panel-enemy {
+    top: 18.9% !important;
+    height: 45.2% !important;
+  }
+
+  .board-panel-own .board,
+  .board-panel-enemy .board {
+    left: 6.5% !important;
+    top: 4.1% !important;
+
+    width: min(80%, 39dvh) !important;
+    height: min(80%, 39dvh) !important;
+    min-width: min(80%, 39dvh) !important;
+    min-height: min(80%, 39dvh) !important;
+    max-width: min(80%, 39dvh) !important;
+    max-height: min(80%, 39dvh) !important;
+  }
+}
+
+/* BARDZO NISKIE TELEFONY W POZIOMIE */
+@media (max-height: 440px) and (min-aspect-ratio: 1/1) {
+  .board-panel-own,
+  .board-panel-enemy {
+    top: 18.8% !important;
+    height: 45.0% !important;
+  }
+
+  .board-panel-own .board,
+  .board-panel-enemy .board {
+    left: 7.0% !important;
+    top: 4.4% !important;
+
+    width: min(78%, 37dvh) !important;
+    height: min(78%, 37dvh) !important;
+    min-width: min(78%, 37dvh) !important;
+    min-height: min(78%, 37dvh) !important;
+    max-width: min(78%, 37dvh) !important;
+    max-height: min(78%, 37dvh) !important;
   }
 }
